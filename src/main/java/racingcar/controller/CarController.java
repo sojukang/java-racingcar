@@ -1,6 +1,7 @@
 package racingcar.controller;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import racingcar.model.CarDto;
 import racingcar.model.CarToCarDtoMapper;
@@ -8,6 +9,8 @@ import racingcar.model.Cars;
 import racingcar.model.Random;
 
 class CarController {
+	private static final String CAR_NAME_DELIMITER = ",";
+
 	private final Cars cars;
 	private final Random random;
 
@@ -16,8 +19,15 @@ class CarController {
 		this.random = new Random();
 	}
 
-	void createCars(String[] carNames) {
-		cars.createCars(carNames);
+	String[] splitCarNames(String input) {
+		return Stream.of(input.split(CAR_NAME_DELIMITER))
+			.map(String::trim)
+			.toArray(String[]::new);
+	}
+
+	void createCars(String carNames) {
+		String[] splitCarNames = splitCarNames(carNames);
+		cars.createCars(splitCarNames);
 	}
 
 	void run() {

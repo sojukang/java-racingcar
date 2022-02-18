@@ -5,10 +5,10 @@ import java.util.stream.IntStream;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
-public class RacingFrontController {
+public class RacingController {
 	private final CarController carController;
 
-	public RacingFrontController() {
+	public RacingController() {
 		this.carController = new CarController();
 	}
 
@@ -21,7 +21,7 @@ public class RacingFrontController {
 		}
 	}
 
-	public void startGame() {
+	public void run() {
 		int iteration = InputView.getIterationNumber();
 		ResultView.printBeforeGameResult();
 		runInIteration(iteration);
