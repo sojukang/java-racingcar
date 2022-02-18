@@ -1,8 +1,6 @@
 package racingcar.controller;
 
-import java.util.List;
-
-import racingcar.model.CarDto;
+import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 public class RacingFrontController {
@@ -15,19 +13,17 @@ public class RacingFrontController {
 	}
 
 	public void service() {
-		ModelMap modelMap = new ModelMap();
-		exceptionHandleProcess(carCreateController, modelMap);
-		exceptionHandleProcess(carRunController, modelMap);
-		List<CarDto> winners = (List<CarDto>)modelMap.getParameter("winners");
-		ResultView.printWinners(winners);
+		ModelAndView mv = new ModelAndView(new InputView(), new ResultView());
+		exceptionHandleProcess(carCreateController, mv);
+		exceptionHandleProcess(carRunController, mv);
 	}
 
-	private void exceptionHandleProcess(Controller controller, ModelMap modelMap) {
+	private void exceptionHandleProcess(Controller controller, ModelAndView mv) {
 		try {
-			controller.process(modelMap);
+			controller.process(mv);
 		} catch (RuntimeException e) {
 			System.out.println(e.getMessage());
-			exceptionHandleProcess(controller, modelMap);
+			exceptionHandleProcess(controller, mv);
 		}
 	}
 }

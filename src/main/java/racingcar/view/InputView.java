@@ -11,29 +11,29 @@ public class InputView {
 
 	private static final Scanner scanner = new Scanner(System.in);
 
-	public static String getCarNames() {
-		System.out.println(GET_CAR_NAMES_MESSAGE);
-		return scanner.nextLine();
-	}
-
-	static void validateIterationNumber(String input) {
+	void validateIterationNumber(String input) {
 		validateEmptyInput(input);
 		validatePositiveInput(input);
 	}
 
-	private static void validatePositiveInput(String input) {
+	private void validatePositiveInput(String input) {
 		if (!input.matches(POSITIVE_REGEX)) {
 			throw new IllegalArgumentException(ERROR_NOT_POSITIVE_MESSAGE);
 		}
 	}
 
-	private static void validateEmptyInput(String input) {
+	private void validateEmptyInput(String input) {
 		if (input == null || input.isEmpty()) {
 			throw new IllegalArgumentException(ERROR_EMPTY_INPUT_MESSAGE);
 		}
 	}
 
-	public static int getIterationNumber() {
+	public String getCarNames() {
+		System.out.println(GET_CAR_NAMES_MESSAGE);
+		return scanner.nextLine();
+	}
+
+	public int getIterationNumber() {
 		System.out.println(GET_ITERATION_NUMBER_MESSAGE);
 		String input = scanner.nextLine();
 		try {
