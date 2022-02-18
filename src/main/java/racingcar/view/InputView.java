@@ -11,24 +11,9 @@ public class InputView {
 
 	private static final Scanner scanner = new Scanner(System.in);
 
-	private InputView() {
-	}
-
 	public static String getCarNames() {
 		System.out.println(GET_CAR_NAMES_MESSAGE);
 		return scanner.nextLine();
-	}
-
-	public static int getIterationNumber() {
-		System.out.println(GET_ITERATION_NUMBER_MESSAGE);
-		String input = scanner.nextLine();
-		try {
-			validateIterationNumber(input);
-			return Integer.parseInt(input);
-		} catch (RuntimeException e) {
-			System.out.println(e.getMessage());
-			return getIterationNumber();
-		}
 	}
 
 	static void validateIterationNumber(String input) {
@@ -45,6 +30,18 @@ public class InputView {
 	private static void validateEmptyInput(String input) {
 		if (input == null || input.isEmpty()) {
 			throw new IllegalArgumentException(ERROR_EMPTY_INPUT_MESSAGE);
+		}
+	}
+
+	public static int getIterationNumber() {
+		System.out.println(GET_ITERATION_NUMBER_MESSAGE);
+		String input = scanner.nextLine();
+		try {
+			validateIterationNumber(input);
+			return Integer.parseInt(input);
+		} catch (RuntimeException e) {
+			System.out.println(e.getMessage());
+			return getIterationNumber();
 		}
 	}
 }
