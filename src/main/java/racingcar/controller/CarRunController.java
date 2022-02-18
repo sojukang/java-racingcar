@@ -24,7 +24,7 @@ class CarRunController implements Controller {
 			run();
 			mv.getResultView().printGameResult(getCars());
 		}
-		mv.putParameter("winners", getWinners());
+		mv.getResultView().printWinners(getWinners());
 	}
 
 	private void run() {

@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class InputViewTest {
-	private final InputView inputView = new InputView();
+	private final InputView inputView = new ConsoleInputView();
 
 	@ParameterizedTest
 	@ValueSource(strings = {"0", "-1"})
