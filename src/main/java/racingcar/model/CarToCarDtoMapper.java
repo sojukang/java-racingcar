@@ -11,6 +11,6 @@ public class CarToCarDtoMapper {
 	public static List<CarDto> carsToCarDtos(List<Car> cars) {
 		return cars.stream()
 			.map(CarDto::new)
-			.collect(Collectors.toList());
+			.collect(Collectors.toUnmodifiableList());
 	}
 }
