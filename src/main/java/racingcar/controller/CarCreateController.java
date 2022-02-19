@@ -3,6 +3,8 @@ package racingcar.controller;
 import java.util.stream.Stream;
 
 import racingcar.model.Cars;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 class CarCreateController implements Controller {
 	private static final String CAR_NAME_DELIMITER = ",";
@@ -10,8 +12,8 @@ class CarCreateController implements Controller {
 	private final Cars cars = Cars.INSTANCE;
 
 	@Override
-	public void process(ModelAndView mv) {
-		String[] carNames = carNamesFormatter(mv.getInputView().getCarNames());
+	public void process(InputView inputView, ResultView resultView) {
+		String[] carNames = carNamesFormatter(inputView.getCarNames());
 		cars.createCars(carNames);
 	}
 

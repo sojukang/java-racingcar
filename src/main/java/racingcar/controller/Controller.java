@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 interface Controller {
-	void process(ModelAndView modelandView);
+	void process(InputView inputView, ResultView resultView);
 }

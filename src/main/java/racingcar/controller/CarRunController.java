@@ -6,6 +6,8 @@ import racingcar.model.CarDto;
 import racingcar.model.CarToCarDtoMapper;
 import racingcar.model.Cars;
 import racingcar.model.Random;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 class CarRunController implements Controller {
 	private final Random random;
@@ -16,16 +18,16 @@ class CarRunController implements Controller {
 	}
 
 	@Override
-	public void process(ModelAndView mv) {
-		int iteration = mv.getInputView().getIterationNumber();
-		mv.getResultView().printBeforeGameResult();
+	public void process(InputView inputView, ResultView resultView) {
+		int iteration = inputView.getIterationNumber();
+		resultView.printBeforeGameResult();
 
 		for (int i = 0; i < iteration; i++) {
 			run();
-			mv.getResultView().printGameResult(getCars());
+			resultView.printGameResult(getCars());
 		}
 
-		mv.getResultView().printWinners(getWinners());
+		resultView.printWinners(getWinners());
 	}
 
 	private void run() {
