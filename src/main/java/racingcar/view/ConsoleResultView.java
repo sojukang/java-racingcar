@@ -9,6 +9,12 @@ public class ConsoleResultView implements ResultView {
 	private static final String JOIN_DELIMITER = ", ";
 
 	@Override
+	public void printBeforeGameResult() {
+		printEmptyLine();
+		System.out.println("실행 결과");
+	}
+
+	@Override
 	public void printGameResult(List<CarDto> cars) {
 		cars.stream()
 			.map(car -> car.getName() + " : " + "-".repeat(car.getPosition()))
@@ -22,12 +28,6 @@ public class ConsoleResultView implements ResultView {
 			.map(CarDto::getName)
 			.collect(Collectors.toList());
 		System.out.println(String.join(JOIN_DELIMITER, winners) + "가 최종 우승했습니다.");
-	}
-
-	@Override
-	public void printBeforeGameResult() {
-		printEmptyLine();
-		System.out.println("실행 결과");
 	}
 
 	private void printEmptyLine() {

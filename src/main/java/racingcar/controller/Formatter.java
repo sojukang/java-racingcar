@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import java.util.stream.Stream;
 
-public class Formatter {
+class Formatter {
 	private static final String CAR_NAME_DELIMITER = ",";
 
 	private Formatter() {

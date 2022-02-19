@@ -7,18 +7,6 @@ public class ConsoleInputView implements InputView {
 
 	private static final Scanner scanner = new Scanner(System.in);
 
-	private void validatePositiveInput(String input) {
-		if (!input.matches(POSITIVE_REGEX)) {
-			throw new IllegalArgumentException("양수를 입력해주세요.");
-		}
-	}
-
-	private void validateEmptyInput(String input) {
-		if (input == null || input.isEmpty()) {
-			throw new IllegalArgumentException("빈 값을 입력하셨습니다. 양수를 입력해주세요.");
-		}
-	}
-
 	@Override
 	public String getCarNames() {
 		System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
@@ -42,5 +30,17 @@ public class ConsoleInputView implements InputView {
 	public void validateIterationNumber(String input) {
 		validateEmptyInput(input);
 		validatePositiveInput(input);
+	}
+
+	private void validatePositiveInput(String input) {
+		if (!input.matches(POSITIVE_REGEX)) {
+			throw new IllegalArgumentException("양수를 입력해주세요.");
+		}
+	}
+
+	private void validateEmptyInput(String input) {
+		if (input == null || input.isEmpty()) {
+			throw new IllegalArgumentException("빈 값을 입력하셨습니다. 양수를 입력해주세요.");
+		}
 	}
 }

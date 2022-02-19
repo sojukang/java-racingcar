@@ -11,7 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-	private Cars cars = Cars.INSTANCE;
+	private final Cars cars = Cars.INSTANCE;
 	private List<Integer> moveConditionNumbers;
 
 	@BeforeEach

@@ -20,29 +20,27 @@ class Car {
 
 	void move(int number) {
 		if (number >= MOVE_CONDITION_NUMBER) {
-			this.position++;
+			position++;
 		}
 	}
 
 	int getBiggerPosition(int position) {
-		return Math.max(position, this.position);
+		return Math.max(this.position, position);
 	}
 
 	boolean isSamePosition(int position) {
 		return this.position == position;
 	}
 
-	String getName() {
-		return this.name;
-	}
-
-	int getPosition() {
-		return this.position;
-	}
-
 	private void validateName(String name) {
 		validateEmptyName(name);
 		validateOverNameLength(name);
+	}
+
+	private void validateEmptyName(String name) {
+		if (name.isEmpty()) {
+			throw new IllegalArgumentException(ERROR_EMPTY_CAR_NAME_MESSAGE);
+		}
 	}
 
 	private void validateOverNameLength(String name) {
@@ -51,10 +49,12 @@ class Car {
 		}
 	}
 
-	private void validateEmptyName(String name) {
-		if (name.isEmpty()) {
-			throw new IllegalArgumentException(ERROR_EMPTY_CAR_NAME_MESSAGE);
-		}
+	String getName() {
+		return name;
+	}
+
+	int getPosition() {
+		return position;
 	}
 
 	@Override

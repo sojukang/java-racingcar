@@ -23,6 +23,13 @@ public enum Cars {
 			.forEach(cars::add);
 	}
 
+	private void checkDuplicationCarNames(String[] carNames) {
+		Set<String> duplicationCheck = new HashSet<>(Arrays.asList(carNames));
+		if (duplicationCheck.size() != carNames.length) {
+			throw new IllegalArgumentException(ERROR_CAR_NAMES_DUPLICATE_MESSAGE);
+		}
+	}
+
 	public void moveAll(List<Integer> integers) {
 		validateIntegersSize(integers);
 		int i = 0;
@@ -36,14 +43,6 @@ public enum Cars {
 		if (randoms.size() < cars.size()) {
 			throw new IllegalStateException(ERROR_INVALID_LIST_SIZE);
 		}
-	}
-
-	public int getSize() {
-		return cars.size();
-	}
-
-	public List<Car> getCars() {
-		return cars;
 	}
 
 	public List<Car> getWinners() {
@@ -60,10 +59,11 @@ public enum Cars {
 		return maxPosition;
 	}
 
-	private void checkDuplicationCarNames(String[] carNames) {
-		Set<String> duplicationCheck = new HashSet<>(Arrays.asList(carNames));
-		if (duplicationCheck.size() != carNames.length) {
-			throw new IllegalArgumentException(ERROR_CAR_NAMES_DUPLICATE_MESSAGE);
-		}
+	public int getSize() {
+		return cars.size();
+	}
+
+	public List<Car> getCars() {
+		return cars;
 	}
 }
