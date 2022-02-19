@@ -11,13 +11,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CarsTest {
-	private Cars cars;
+	private Cars cars = Cars.INSTANCE;
 	private List<Integer> moveConditionNumbers;
 
 	@BeforeEach
 	void setUp() {
 		moveConditionNumbers = Arrays.asList(3, 4);
-		cars = new Cars();
 		cars.createCars(new String[] {"범고래", "소주캉"});
 	}
 

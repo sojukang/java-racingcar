@@ -9,7 +9,7 @@ import racingcar.model.Random;
 
 class CarRunController implements Controller {
 	private final Random random;
-	private Cars cars = Cars.getInstance();
+	private final Cars cars = Cars.INSTANCE;
 
 	CarRunController() {
 		this.random = new Random();
@@ -17,13 +17,14 @@ class CarRunController implements Controller {
 
 	@Override
 	public void process(ModelAndView mv) {
-		cars = (Cars)mv.getParameter("cars");
 		int iteration = mv.getInputView().getIterationNumber();
 		mv.getResultView().printBeforeGameResult();
+
 		for (int i = 0; i < iteration; i++) {
 			run();
 			mv.getResultView().printGameResult(getCars());
 		}
+
 		mv.getResultView().printWinners(getWinners());
 	}
 
