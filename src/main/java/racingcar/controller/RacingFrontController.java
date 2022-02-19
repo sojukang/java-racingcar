@@ -4,12 +4,12 @@ import racingcar.view.ConsoleInputView;
 import racingcar.view.ConsoleResultView;
 
 public class RacingFrontController {
-	private final Controller carRunController;
 	private final Controller carCreateController;
+	private final Controller carRunController;
 
 	public RacingFrontController() {
-		this.carRunController = new CarRunController();
 		this.carCreateController = new CarCreateController();
+		this.carRunController = new CarRunController();
 	}
 
 	public void service() {

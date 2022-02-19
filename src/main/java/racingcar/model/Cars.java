@@ -11,10 +11,11 @@ public class Cars {
 	private static final String ERROR_CAR_NAMES_DUPLICATE_MESSAGE = "중복된 자동차 이름이 입력됐습니다.";
 	private static final String ERROR_INVALID_LIST_SIZE = "전달된 리스트 크기가 작습니다.";
 
-	private final List<Car> cars;
+	private static final Cars INSTANCE = new Cars();
+	private final List<Car> cars = new ArrayList<>();
 
-	public Cars() {
-		this.cars = new ArrayList<>();
+	public static Cars getInstance() {
+		return INSTANCE;
 	}
 
 	public void createCars(String[] carNames) {

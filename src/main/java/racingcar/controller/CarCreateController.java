@@ -6,11 +6,7 @@ import racingcar.model.Cars;
 
 class CarCreateController implements Controller {
 	private static final String CAR_NAME_DELIMITER = ",";
-	private final Cars cars;
-
-	CarCreateController() {
-		cars = new Cars();
-	}
+	private final Cars cars = Cars.getInstance();
 
 	@Override
 	public void process(ModelAndView mv) {

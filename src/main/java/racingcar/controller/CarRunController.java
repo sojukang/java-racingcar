@@ -9,7 +9,7 @@ import racingcar.model.Random;
 
 class CarRunController implements Controller {
 	private final Random random;
-	private Cars cars;
+	private Cars cars = Cars.getInstance();
 
 	CarRunController() {
 		this.random = new Random();
