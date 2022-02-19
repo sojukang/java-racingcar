@@ -9,10 +9,10 @@ public class StringCalculator {
 	private static final String ERROR_NOT_NUMBER_MESSAGE = "숫자 이외의 값이 입력되었습니다. 숫자를 입력하세요.";
 
 	public int splitAndSum(String input) {
-		if (validateNullOrBlank(input)) {
+		if (isNullOrBlank(input)) {
 			return 0;
 		}
-		return this.sum(split(input));
+		return sum(split(input));
 	}
 
 	private int sum(String[] numbers) {
@@ -21,19 +21,23 @@ public class StringCalculator {
 			.sum();
 	}
 
-	private boolean validateNullOrBlank(String input) {
+	private boolean isNullOrBlank(String input) {
 		return input == null || input.isBlank();
 	}
 
 	private int mapToInt(String number) {
 		try {
 			int i = Integer.parseInt(number);
-			if (i < 0) {
-				throw new RuntimeException(ERROR_NEGATIVE_NUMBER_MESSAGE);
-			}
+			checkNegative(i);
 			return i;
 		} catch (NumberFormatException e) {
 			throw new RuntimeException(ERROR_NOT_NUMBER_MESSAGE);
+		}
+	}
+
+	private void checkNegative(int i) {
+		if (i < 0) {
+			throw new RuntimeException(ERROR_NEGATIVE_NUMBER_MESSAGE);
 		}
 	}
 }

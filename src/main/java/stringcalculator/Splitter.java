@@ -20,21 +20,21 @@ class Splitter {
 	}
 
 	static String[] splitCustomDelimiter(String input) {
-		Matcher m = getMatcher(input);
-		validateMatchRegEx(m);
-		String customDelimiter = m.group(DELIMITER_INDEX);
+		Matcher matcher = getMatcher(input);
+		validateMatchRegEx(matcher);
+		String customDelimiter = matcher.group(DELIMITER_INDEX);
 		if (isSpecialDelimiter(customDelimiter)) {
-			return m.group(INPUT_INDEX).split(addCustomDelimiterPrefix(customDelimiter));
+			return matcher.group(INPUT_INDEX).split(addCustomDelimiterPrefix(customDelimiter));
 		}
-		return m.group(INPUT_INDEX).split(customDelimiter);
+		return matcher.group(INPUT_INDEX).split(customDelimiter);
 	}
 
 	static boolean isCustomInput(String input) {
 		return input.startsWith(CUSTOM_DELIMITER_PREFIX);
 	}
 
-	private static void validateMatchRegEx(Matcher m) {
-		if (!m.find()) {
+	private static void validateMatchRegEx(Matcher matcher) {
+		if (!matcher.find()) {
 			throw new RuntimeException();
 		}
 	}
